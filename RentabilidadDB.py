@@ -9,10 +9,10 @@ conn = sqlite3.connect("Northwind.db")
 
 query = ''' 
     SELECT ProductName, SUM(Price * Quantity) as Revenue
-    From OrderDetails o
+    FROM OrderDetails od
     JOIN Products p ON p.ProductID = od.ProductID
     GROUP BY od.ProductID
-    ORDER BY Revenue Desc
+    ORDER BY Revenue DESC
     LIMIT 10
 '''
 
@@ -31,7 +31,7 @@ plt.show()
 #Obteniendo los 10 empleados mas efectivos
 
 query2 = '''
-    SELECT FirstName  '' ''  LastName as Employee, COUNT(*) as Total
+    SELECT FirstName || " " || LastName as Employee, COUNT(*) as Total
     FROM Orders o
     JOIN Employees o
     ON e.EmployeeID = o.EmployeeID
@@ -52,7 +52,7 @@ plt.show()
 #Obteniendo los 3 empleados menos efectivos
 
 query3 = '''
-    SELECT FirstName  '' ''  LastName as Employee, COUNT(*) as Total
+    SELECT FirstName  || " " || LastName as Employee, COUNT(*) as Total
     FROM Orders o
     JOIN Employees o
     ON e.EmployeeID = o.EmployeeID
