@@ -31,16 +31,16 @@ plt.show()
 #Obteniendo los 10 empleados mas efectivos
 
 query2 = '''
-    SELECT FirstName || " " || LastName as Employee, COUNT(*) as Total
+    SELECT FirstName || " " || LastName as Employees, COUNT(*) as Total
     FROM Orders o
-    JOIN Employees o
+    JOIN Employees e
     ON e.EmployeeID = o.EmployeeID
     GROUP BY o.EmployeeID
     ORDER BY Total DESC
     LIMIT 10
 '''
 top_employees = pd.read_sql_query(query2,conn)
-top_products.plot(x="Employes", y="Total", kind="bar", figsize=(10,5), legend=False)
+top_employees.plot(x="Employees", y="Total", kind="bar", figsize=(10,5), legend=False)
 
 plt.title("Empleados mas efectivos")
 plt.xlabel("Empleados")
@@ -52,16 +52,16 @@ plt.show()
 #Obteniendo los 3 empleados menos efectivos
 
 query3 = '''
-    SELECT FirstName  || " " || LastName as Employee, COUNT(*) as Total
+    SELECT FirstName  || " " || LastName as Employees, COUNT(*) as Total
     FROM Orders o
-    JOIN Employees o
+    JOIN Employees e
     ON e.EmployeeID = o.EmployeeID
     GROUP BY o.EmployeeID
     ORDER BY Total ASC
     LIMIT 3
 '''
 top_employees = pd.read_sql_query(query3,conn)
-top_products.plot(x="Employes", y="Total", kind="bar", figsize=(10,5), legend=False)
+top_employees.plot(x="Employees", y="Total", kind="bar", figsize=(10,5), legend=False)
 
 plt.title("Empleados mas efectivos")
 plt.xlabel("Empleados")
