@@ -39,13 +39,16 @@ query2 = '''
     ORDER BY Total DESC
     LIMIT 10
 '''
+
+#CREAMOS VARIABLE UTILIZADO LA VARIABLE DE CONN Y QUERY
 top_employees = pd.read_sql_query(query2,conn)
+
+#DEFINIMOS PARAMETROS DEL GRAFICO
 top_employees.plot(x="Employees", y="Total", kind="bar", figsize=(10,5), legend=False)
 
 plt.title("Empleados mas efectivos")
 plt.xlabel("Empleados")
 plt.ylabel("Total vendido")
-
 plt.xticks(rotation=45)
 plt.show()
 
@@ -60,10 +63,15 @@ query3 = '''
     ORDER BY Total ASC
     LIMIT 3
 '''
+
+#CREAMOS VARIABLE UTILIZADO LA VARIABLE DE CONN Y QUERY
 top_employees = pd.read_sql_query(query3,conn)
+
+#DEFINIMOS PARAMETROS DEL GRAFICO
+
 top_employees.plot(x="Employees", y="Total", kind="bar", figsize=(10,5), legend=False)
 
-plt.title("Empleados mas efectivos")
+plt.title("Empleados menos efectivos")
 plt.xlabel("Empleados")
 plt.ylabel("Total vendido")
 
